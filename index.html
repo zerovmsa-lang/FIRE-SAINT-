@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>THE FIRE SAINT — Ozai</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --fire:#ff6a00;
+    --fire2:#ffb300;
+    --red:#ff2d00;
+    --ice:#9ddcff;
+    --dark:#050507;
+    --dark2:#0c0b10;
+    --panel:rgba(18,15,20,.82);
+    --text:#f5eee6;
+    --muted:#aaa2a0;
+}
+
+*{
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 50% -10%,rgba(255,91,0,.25),transparent 35%),
+        radial-gradient(circle at 90% 40%,rgba(255,30,0,.08),transparent 30%),
+        #050507;
+    font-family:Inter,Arial,sans-serif;
+    line-height:1.8;
+    overflow-x:hidden;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:
+        radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:5px 5px;
+    opacity:.25;
+    z-index:0;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+h1,h2,h3,h4{
+    font-family:Cinzel,serif;
+}
+
+.nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:100;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    padding:14px 20px;
+    background:rgba(5,5,7,.78);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,106,0,.18);
+}
+
+.nav a{
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#c7c0bc;
+    transition:.3s;
+}
+
+.nav a:hover{
+    color:#ff8b32;
+    text-shadow:0 0 12px #ff6a00;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    padding:100px 20px 60px;
+    text-align:center;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,rgba(255,81,0,.22),transparent 65%);
+    filter:blur(30px);
+    animation:pulse 4s infinite alternate;
+}
+
+@keyframes pulse{
+    from{transform:scale(.85);opacity:.5}
+    to{transform:scale(1.15);opacity:1}
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:1100px;
+}
+
+.hero img{
+    width:min(360px,85vw);
+    height:460px;
+    object-fit:cover;
+    border-radius:20px;
+    border:1px solid rgba(255,136,40,.35);
+    box-shadow:
+        0 0 30px rgba(255,73,0,.25),
+        0 0 100px rgba(255,73,0,.12);
+    margin-bottom:30px;
+}
+
+.kicker{
+    color:#ff9d42;
+    letter-spacing:7px;
+    font-size:12px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-size:clamp(42px,9vw,100px);
+    line-height:1;
+    margin:15px 0;
+    color:#fff;
+    text-shadow:
+        0 0 15px rgba(255,100,0,.7),
+        0 0 50px rgba(255,50,0,.3);
+}
+
+.hero h1 span{
+    color:#ff7419;
+}
+
+.subtitle{
+    max-width:700px;
+    margin:auto;
+    color:#bcb3ae;
+    font-size:16px;
+}
+
+.scroll{
+    display:inline-block;
+    margin-top:35px;
+    padding:12px 25px;
+    border:1px solid rgba(255,106,0,.4);
+    border-radius:50px;
+    color:#ff9844;
+    transition:.3s;
+}
+
+.scroll:hover{
+    background:#ff6a00;
+    color:#111;
+    box-shadow:0 0 30px rgba(255,106,0,.4);
+}
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-title small{
+    color:#ff7924;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    font-size:11px;
+}
+
+.section-title h2{
+    font-size:clamp(30px,6vw,55px);
+    margin:10px 0;
+}
+
+.section-title p{
+    color:#958e8b;
+    max-width:700px;
+    margin:auto;
+}
+
+.card{
+    background:linear-gradient(145deg,rgba(30,25,29,.88),rgba(9,8,12,.88));
+    border:1px solid rgba(255,106,0,.16);
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.card:hover{
+    border-color:rgba(255,106,0,.4);
+}
+
+.card h3{
+    color:#ff8935;
+    margin-top:0;
+}
+
+.card p{
+    color:#c6bfbb;
+}
+
+.creator{
+    border-color:rgba(255,174,0,.35);
+    background:
+        radial-gradient(circle at 50% 0%,rgba(255,154,0,.12),transparent 55%),
+        rgba(15,12,15,.9);
+}
+
+.creator h2{
+    color:#ffc15a;
+    text-align:center;
+    font-size:38px;
+}
+
+.creator .quote{
+    text-align:center;
+    font-family:Cinzel,serif;
+    color:#ffd17d;
+    font-size:18px;
+    margin:30px auto;
+    max-width:800px;
+}
+
+.cosmology{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.tier{
+    padding:28px;
+    border-radius:18px;
+    background:rgba(16,14,19,.85);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.35s;
+}
+
+.tier:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,106,0,.5);
+}
+
+.tier-number{
+    font-family:Cinzel,serif;
+    font-size:42px;
+    color:#ff7421;
+}
+
+.tier h3{
+    margin:4px 0 12px;
+}
+
+.tier p{
+    color:#aaa3a0;
+    font-size:14px;
+}
+
+.profile{
+    display:grid;
+    grid-template-columns:360px 1fr;
+    gap:35px;
+    align-items:start;
+}
+
+.profile-image{
+    width:100%;
+    height:520px;
+    object-fit:cover;
+    border-radius:20px;
+    border:1px solid rgba(255,106,0,.25);
+    box-shadow:0 0 60px rgba(255,70,0,.12);
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:20px;
+}
+
+.stat{
+    padding:18px;
+    background:rgba(255,255,255,.035);
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.stat span{
+    display:block;
+    color:#777;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.stat strong{
+    color:#eee;
+}
+
+.timeline{
+    position:relative;
+    margin-left:20px;
+    padding-left:35px;
+    border-left:1px solid rgba(255,106,0,.35);
+}
+
+.event{
+    position:relative;
+    margin-bottom:45px;
+}
+
+.event:before{
+    content:"";
+    position:absolute;
+    left:-42px;
+    top:8px;
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:#ff6a00;
+    box-shadow:0 0 18px #ff6a00;
+}
+
+.event h3{
+    color:#ff8935;
+}
+
+.event p{
+    color:#aaa4a0;
+}
+
+.ability{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:25px;
+    align-items:start;
+    padding:28px 0;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.ability:last-child{
+    border-bottom:0;
+}
+
+.ability-icon{
+    width:80px;
+    height:80px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:radial-gradient(circle,#ff9d32,#7d1800);
+    box-shadow:0 0 35px rgba(255,80,0,.35);
+    font-size:32px;
+}
+
+.ability h3{
+    margin:0;
+    color:#ff963d;
+}
+
+.ability p{
+    color:#aaa4a0;
+}
+
+.warning{
+    border:1px solid rgba(255,55,0,.35);
+    background:rgba(80,15,5,.15);
+}
+
+.warning h3{
+    color:#ff5735;
+}
+
+.nyra{
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:35px;
+    align-items:center;
+}
+
+.nyra img{
+    width:100%;
+    height:520px;
+    object-fit:cover;
+    border-radius:20px;
+    border:1px solid rgba(157,220,255,.25);
+    box-shadow:0 0 60px rgba(70,160,255,.12);
+}
+
+.ice{
+    color:#9ddcff!important;
+}
+
+.quote-box{
+    padding:35px;
+    text-align:center;
+    border-radius:20px;
+    background:linear-gradient(145deg,rgba(255,80,0,.08),rgba(255,255,255,.02));
+    border:1px solid rgba(255,106,0,.2);
+    font-family:Cinzel,serif;
+    font-size:22px;
+}
+
+.fire-text{
+    color:#ff8530;
+}
+
+.big-feat{
+    text-align:center;
+    padding:55px 25px;
+    background:
+        radial-gradient(circle at center,rgba(255,70,0,.18),transparent 55%),
+        rgba(15,10,10,.9);
+    border:1px solid rgba(255,90,0,.3);
+    border-radius:25px;
+}
+
+.big-feat h2{
+    font-size:clamp(35px,7vw,70px);
+    color:#ff6a00;
+    text-shadow:0 0 30px rgba(255,70,0,.6);
+}
+
+.big-feat p{
+    max-width:750px;
+    margin:auto;
+    color:#c7bfbb;
+}
+
+footer{
+    text-align:center;
+    padding:80px 20px;
+    border-top:1px solid rgba(255,106,0,.12);
+    color:#68615e;
+}
+
+footer strong{
+    color:#ff7220;
+}
+
+@media(max-width:800px){
+    .nav{
+        overflow-x:auto;
+        justify-content:flex-start;
+        white-space:nowrap;
+    }
+
+    .profile,
+    .nyra{
+        grid-template-columns:1fr;
+    }
+
+    .profile-image,
+    .nyra img{
+        height:430px;
+    }
+
+    .ability{
+        grid-template-columns:65px 1fr;
+    }
+
+    .ability-icon{
+        width:60px;
+        height:60px;
+        font-size:23px;
+    }
+}
+
+@media(max-width:500px){
+    section{
+        padding:70px 0;
+    }
+
+    .card{
+        padding:22px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+    <a href="#creator">Creator</a>
+    <a href="#cosmology">Cosmology</a>
+    <a href="#ozai">Ozai</a>
+    <a href="#lore">Lore</a>
+    <a href="#abilities">Abilities</a>
+    <a href="#nyra">Nyra</a>
+    <a href="#present">Present</a>
+</nav>
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <img src="ozai.jpg" alt="Ozai — The Fire Saint">
+
+        <div class="kicker">The Unknown Protector • The Fire Saint</div>
+
+        <h1>THE GREAT<br><span>FIRE SAINT</span></h1>
+
+        <p class="subtitle">
+            The story of Oqhoi fȳr — Ozai — the mysterious fire,
+            the lowest-class higher being who became something no one
+            ever realized he had become.
+        </p>
+
+        <a class="scroll" href="#creator">ENTER THE STORY ↓</a>
+
+    </div>
+
+</header>
+
+
+<section id="creator">
+
+<div class="container">
+
+<div class="section-title">
+    <small>The beginning of all beginnings</small>
+    <h2>The Absolute Creator</h2>
+</div>
+
+<div class="card creator">
+
+    <h2>T. C. O. A. C</h2>
+
+    <div class="quote">
+        The Creator Of All Creator.
+    </div>
+
+    <p>
+        T. C. O. A. C (The creator of all creator), the creator of all
+        beings, creators and overpowered beings alike are his creations.
+        Saying absolute cannot scale the actuality of his existence,
+        the beginning of all beginnings and the end of all ends.
+    </p>
+
+    <p>
+        Claiming to be above him is not just impossible, it is a sin.
+        I, the creator of this story, maybe able to remove him, but he
+        is reality. I cannot rub him from actual real life.
+        The true creator is him.
+    </p>
+
+    <p class="quote">
+        Praise. Praise. Praise. Oh Almighty.
+    </p>
+
+    <p>
+        He mainly resides in the Origin realm.
+    </p>
+
+</div>
+
+</div>
+</section>
+
+
+<section id="cosmology">
+
+<div class="container">
+
+<div class="section-title">
+    <small>The architecture of existence</small>
+    <h2>Cosmology</h2>
+    <p>
+        From the Omniverse to the realm beyond comprehension.
+    </p>
+</div>
+
+<div class="cosmology">
+
+<div class="tier">
+    <div class="tier-number">03</div>
+    <h3>Omniverse</h3>
+    <p>
+        A complete mega collection of all universe, multiverse,
+        megaverse and hyperverse.
+    </p>
+    <p>
+        The strongest beings residing here can destroy, erase or
+        manipulate the Omniverse as much as they want.
+    </p>
+    <p class="fire-text">Omniversal scale.</p>
+</div>
+
+<div class="tier">
+    <div class="tier-number">02</div>
+    <h3>Outside Existence</h3>
+    <p>
+        Where concepts and laws of existence fail and metaphysical
+        scales reach their end.
+    </p>
+    <p>
+        Its beings govern the Omniverse and realities inside it.
+    </p>
+    <p class="fire-text">Outerversal scale.</p>
+</div>
+
+<div class="tier">
+    <div class="tier-number">01</div>
+    <h3>Realm of the Writers</h3>
+    <p>
+        A realm governed by new rules, laws and concepts directly
+        set by T. C. O. A. C.
+    </p>
+    <p>
+        The realms beneath it become story and fiction crafted
+        through imagination and narrative manipulation.
+    </p>
+</div>
+
+<div class="tier">
+    <div class="tier-number">00</div>
+    <h3>Sim Te Lenna</h3>
+    <p>
+        The unending realm of the higher beings. Still bound by
+        the Creator Law.
+    </p>
+    <p>
+        Its beings can only be killed, erased or judged by
+        T. C. O. A. C.
+    </p>
+</div>
+
+</div>
+
+<div class="card" style="margin-top:25px;">
+    <h3>The Evil Realm</h3>
+    <p>
+        Still part of Sim Te Lenna, but separated through envy and
+        hatred. The evil unending realm became the home of the
+        forces that turned against the love of the Absolute Creator.
+    </p>
+</div>
+
+</div>
+</section>
+
+
+<section id="ozai">
+
+<div class="container">
+
+<div class="section-title">
+    <small>The unknown protector</small>
+    <h2>Oqhoi fȳr — Ozai</h2>
+</div>
+
+<div class="profile">
+
+<img class="profile-image" src="ozai.jpg" alt="Ozai">
+
+<div>
+
+<div class="card">
+
+<h3>Identity</h3>
+
+<p>
+Ozai is an 18-year-old handsome, barefooted, short young man,
+around 5'5" in height.
+</p>
+
+<p>
+He has calm blue eyes and long shaggy white hair. He wears a
+long grey robe adorned with white flame motifs. His slender body
+carries a white lotus pendant suggesting purity and innocence
+that no being could describe.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<span>True Name</span>
+<strong>Oqhoi fȳr</strong>
+</div>
+
+<div class="stat">
+<span>Meaning</span>
+<strong>Mysterious Fire</strong>
+</div>
+
+<div class="stat">
+<span>Title</span>
+<strong>The Fire Saint</strong>
+</div>
+
+<div class="stat">
+<span>Other Titles</span>
+<strong>Protector of All</strong>
+</div>
+
+<div class="stat">
+<span>Species</span>
+<strong>Higher Being</strong>
+</div>
+
+<div class="stat">
+<span>Class</span>
+<strong>Lowest Class</strong>
+</div>
+
+<div class="stat">
+<span>Affinity</span>
+<strong>Fire</strong>
+</div>
+
+<div class="stat">
+<span>Age</span>
+<strong>Unknown</strong>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Personality</h3>
+
+<p>
+Despite being bullied as the lowest tier in Sim Te Lenna,
+Ozai smiles.
+</p>
+
+<p>
+He is never arrogant. He is childish, pure and positive in every
+way. He possesses an aura that no one can really hate, although
+beings of higher class deliberately hate him because they believe
+power is everything.
+</p>
+
+<p class="fire-text">
+He likes honeycomb very much.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<section id="lore">
+
+<div class="container">
+
+<div class="section-title">
+    <small>The journey</small>
+    <h2>Ozai's Lore</h2>
+    <p>
+        How the lowest-class higher being became the ultimate
+        wielder of the First Flame without anyone noticing.
+    </p>
+</div>
+
+<div class="timeline">
+
+<div class="event">
+
+<h3>The Beginning — Origin Space</h3>
+
+<p>
+The Origin Space might be called a space, though there are no
+describable variations to use. It is the absence of everything
+and nothing, the absence of even absolute nothingness.
+</p>
+
+<p>
+Silence so absolute that describing it would not work.
+It never ends and probably never will.
+</p>
+
+<p>
+In this Origin Space, the first to ever exist appeared:
+T. C. O. A. C.
+</p>
+
+<p>
+His emergence clashed with the Origin Space, creating a heat so
+immense that it took the form of a flame. It burned and consumed
+the indescribable space where even nothingness was absent.
+</p>
+
+<p class="fire-text">
+This was the First Flame — the Chaos Flame.
+</p>
+
+</div>
+
+
+<div class="event">
+
+<h3>Creation of Sim Te Lenna</h3>
+
+<p>
+After a long time, the realm and beings from Sim Te Lenna were
+created by T. C. O. A. C.
+</p>
+
+<p>
+Countless beings existed, and all were united in this era.
+</p>
+
+</div>
+
+
+<div class="event">
+
+<h3>Emergence of Evils</h3>
+
+<p>
+The Evil Realm separated as a sub-place in Sim Te Lenna.
+</p>
+
+<p>
+The seven deadly and evil sins — Pride, Greed, Lust, Envy,
+Gluttony, Wrath and Sloth — appeared along with their followers.
+</p>
+
+<p>
+They began exploiting the realm and envied the love T. C. O. A. C
+gave to beings they considered merely dying ants.
+</p>
+
+<p>
+T. C. O. A. C could simply erase them, but he was too loving.
+He could seal them, but never did. He knew it was his fault in
+the first place, and he was lonely.
+</p>
+
+</div>
+
+
+<div class="event">
+
+<h3>The Great War</h3>
+
+<p>
+The war between good and evil marked the beginning of Ozai's
+journey.
+</p>
+
+<p>
+He became a soldier of the True Heaven despite being the lowest
+class of higher being.
+</p>
+
+<p>
+He fought through everlasting eons.
+</p>
+
+</div>
+
+
+<div class="event">
+
+<h3>The Nyra Solwein Incident</h3>
+
+<p>
+During a meeting in the auspicious hall of the True Heavens,
+a soldier accused Ozai of leaking their strategy to their foes.
+</p>
+
+<p>
+The Empress of the Nine Heavens, Nyra Solwein, sat upon her icy
+throne. Her purple gaze turned the floor to ice.
+</p>
+
+<p>
+Ozai knew kneeling and begging would not work.
+</p>
+
+<div class="quote-box">
+    "Damn, gonna get frozen solid real good anyway."
+</div>
+
+<p>
+He approached the Empress.
+</p>
+
+<p>
+Then, with all the courage in his tiny body, Ozai slapped her
+across the face...
+</p>
+
+<p>
+...and kissed her directly on the lips.
+</p>
+
+<p>
+Then he hopped outside so quickly there was no time to react.
+</p>
+
+<div class="card warning">
+
+<h3>Nyra's Response</h3>
+
+<p>
+Her expression became impossible to describe.
+The fury she could no longer hide cracked through her
+expressionless face.
+</p>
+
+<p>
+She slammed her icy throne and shouted:
+</p>
+
+<div class="quote-box">
+    "FIND THAT MOTHER FUCKIN BASTARD!!!!!!"
+</div>
+
+<p>
+The guards began chasing him.
+</p>
+
+<p>
+Nyra threatened to freeze him for eternity if she ever found him.
+Yet deep within her heart, something had changed.
+</p>
+
+<p>
+No being had ever dared to look at her face, much less strike her
+and kiss her.
+She realized that the same low peasant had made her heart race
+for the first time in her existence.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="event">
+
+<h3>The First Flame Chooses Ozai</h3>
+
+<p>
+As the war neared its end, T. C. O. A. C transported Ozai directly
+into the Origin Space.
+</p>
+
+<p>
+The Creator saw no malice in him — only pure innocence and a
+heart that never gave up.
+</p>
+
+<p>
+He gave Ozai the Creation Flame.
+</p>
+
+<p>
+But the Chaos Flame rushed out and landed directly upon Ozai's
+chest, sensing familiarity.
+</p>
+
+<p>
+T. C. O. A. C smiled and gave him the title:
+</p>
+
+<div class="quote-box">
+    THE FIRE SAINT
+</div>
+
+</div>
+
+
+<div class="event">
+
+<h3>The Seven Deadly Sins</h3>
+
+<p>
+Ozai returned to the war and eventually confronted the seven
+deadly sins while remaining disguised.
+</p>
+
+<p>
+They mocked him because of his apparent strength.
+</p>
+
+<p>
+Ozai simply smiled.
+</p>
+
+<div class="quote-box">
+    "Yo yo yo, let's play."
+</div>
+
+</div>
+
+
+<div class="event">
+
+<h3>The Blazing Eyes</h3>
+
+<p>
+Ozai channelled the Creation Flame into his eyes, producing a
+gaze whose power made omniscience look like a joke.
+</p>
+
+<p>
+The flame burned the evils and the Seven Deadly Sins screamed
+in agony.
+</p>
+
+<p>
+Through the technique, Ozai saw through them and discovered
+their weakness.
+</p>
+
+<p>
+They were the Seven Deadly Sins.
+</p>
+
+<p>
+Insults worked.
+</p>
+
+</div>
+
+
+<div class="event">
+
+<h3>The Chaos Beam</h3>
+
+<p>
+The Seven Deadly Sins attacked Ozai relentlessly.
+Their fists struck his face, torso and every possible place.
+</p>
+
+<p>
+Ozai endured the pain through the Creation Flame's healing and
+reconstruction.
+</p>
+
+<div class="quote-box">
+    "That all ya got? Eh, even grandma might strike harder than that."
+</div>
+
+<p>
+Ozai then amplified and channelled all his Chaos Flame into a
+single point.
+</p>
+
+<p>
+The heat was so intense that it burned even himself.
+</p>
+
+<p>
+He released a single, pure, unadulterated beam of heat.
+</p>
+
+<p>
+The Chaos Beam ripped through the Origin Realm, destroying what
+was never even present.
+It erased where even absolute nothingness was absent.
+</p>
+
+<p>
+The destruction ceased half of the unending Origin Realm.
+</p>
+
+</div>
+
+
+<div class="event">
+
+<h3>Seal of the Evils</h3>
+
+<p>
+The Seven Deadly Sins were not erased.
+</p>
+
+<p>
+Ozai channelled the Chaos Flame into his left pupil and created
+a realm inside his eye.
+</p>
+
+<p>
+A vortex of Chaos Flame pulled all seven evil beings into this
+realm.
+</p>
+
+<p class="fire-text">
+The realm became known as True Hell.
+</p>
+
+<p>
+Ozai later called the technique:
+</p>
+
+<div class="quote-box">
+    SEAL OF THE EVILS
+</div>
+
+</div>
+
+
+<div class="event">
+
+<h3>The Duel With T. C. O. A. C</h3>
+
+<p>
+After the war, Ozai asked T. C. O. A. C to duel him.
+</p>
+
+<p>
+Not from malice.
+Not from arrogance.
+</p>
+
+<p>
+He simply wanted a story to tell:
+</p>
+
+<div class="quote-box">
+    "I had a spar with T. C. O. A. C himself."
+</div>
+
+<p>
+T. C. O. A. C reluctantly agreed and repaired the Origin Space
+before the duel.
+</p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<section id="abilities">
+
+<div class="container">
+
+<div class="section-title">
+    <small>The power that should never be forgotten</small>
+    <h2>The Flames & Techniques</h2>
+</div>
+
+<div class="card">
+
+<div class="ability">
+
+<div class="ability-icon">👁️</div>
+
+<div>
+<h3>Blazing Eyes</h3>
+
+<p>
+Ozai channels the Creation Flame through his eyes, creating an
+extremely powerful gaze. To describe the technique as omniscience
+would be a joke.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="ability">
+
+<div class="ability-icon">🔥</div>
+
+<div>
+<h3>Chaos Beam</h3>
+
+<p>
+Ozai amplifies and concentrates the Chaos Flame into a single
+point before releasing a pure, unadulterated beam of heat.
+</p>
+
+<p>
+Its destruction reaches the impossible: it can cease what was
+never even present and erase where even absolute nothingness
+was absent.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="ability">
+
+<div class="ability-icon">👁️</div>
+
+<div>
+<h3>Seal of the Evils</h3>
+
+<p>
+Ozai creates True Hell within his left pupil and uses a vortex
+of Chaos Flame to pull the Seven Deadly Sins into it.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="big-feat">
+
+<div class="kicker">Ultimate Technique</div>
+
+<h2>HEAT OVERLOAD</h2>
+
+<p>
+Ozai channels his vanity and Chaos Flame into a single point.
+The Creation Flame within him seems to stop.
+</p>
+
+<p>
+The Creation Flame bursts out of Ozai. He amplifies the Chaos
+Flame to its absolute limit with his vanity.
+</p>
+
+<p>
+His physical form becomes a form of flame — intangible and
+unharmable.
+</p>
+
+<p>
+The intense flame catches the Origin Space for a fraction of a
+millisecond.
+The never-ending Origin Space where even absolute nothingness
+was absent is erased, unable to be repaired again.
+</p>
+
+<p>
+The heat that never touched something actually reaches the
+hem of T. C. O. A. C.
+</p>
+
+<p class="fire-text">
+And it actually... burned.
+</p>
+
+<p>
+T. C. O. A. C reacts quickly and shuts down the technique in time
+so that the damage can still be repaired.
+</p>
+
+<p>
+If the full power of this technique actually manifests, Ozai
+might be able to last <strong>1 to 2 seconds</strong> from an
+absolute erasure of T. C. O. A. C.
+</p>
+
+</div>
+
+
+<div class="card warning">
+
+<h3>The Creator's Warning</h3>
+
+<p>
+T. C. O. A. C scolded Ozai and told him never to use Heat
+Overload again.
+</p>
+
+<p>
+Ozai agreed.
+</p>
+
+<p>
+The repair was manageable, but even using the technique for a
+fraction of a millisecond left Ozai completely exhausted.
+</p>
+
+</div>
+
+</div>
+</section>
+
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+    <small>Peak state</small>
+    <h2>Oqhoi fȳr the Great</h2>
+</div>
+
+<div class="card">
+
+<p>
+Later, Ozai returned both flames.
+</p>
+
+<div class="quote-box">
+    "It's nice to be powerful, but I think they did their job pretty well hehe."
+</div>
+
+<p>
+The Seven Deadly Sins remained inside the space he created in his
+eyes, but Ozai chose to give up the flames.
+</p>
+
+<p>
+This exact time became known as:
+</p>
+
+<div class="quote-box">
+    OQHOI FȲR THE GREAT
+</div>
+
+<p>
+His strongest state.
+</p>
+
+<p>
+After giving up the flames, Ozai became normal again — but
+stronger, wiser, and more importantly, a seeker of peace rather
+than power.
+</p>
+
+</div>
+
+<div class="card creator">
+
+<h3>The Reward</h3>
+
+<p>
+T. C. O. A. C felt Ozai deserved a reward and granted him one
+wish.
+</p>
+
+<p>
+Ozai was granted complete freedom to roam around all places.
+</p>
+
+<div class="quote-box">
+    EVERYWHERE AND EVERYWHEN.
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<section id="nyra">
+
+<div class="container">
+
+<div class="section-title">
+    <small>The Empress of the Nine Heavens</small>
+    <h2>Nyra Solwein</h2>
+</div>
+
+<div class="nyra">
+
+<div>
+
+<div class="card">
+
+<h3 class="ice">
+    The Ice Empress
+</h3>
+
+<p>
+Nyra Solwein is the Empress of the Nine Heavens.
+Her purple gaze can turn the floor itself into deep solid ice.
+</p>
+
+<p>
+She maintained an expressionless face in front of all beings.
+Until one particular low-class soldier walked directly toward
+her.
+</p>
+
+<p>
+That soldier slapped her.
+</p>
+
+<p>
+Then kissed her.
+</p>
+
+<p>
+Then escaped.
+</p>
+
+<p>
+She wanted him frozen for eternity.
+</p>
+
+<p>
+But beneath the fury, something entirely different had awakened.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>The Secret</h3>
+
+<p>
+Nyra does not know that the man she fell for was the same unknown
+protector who helped end the Great War.
+</p>
+
+<p>
+She still searches for Ozai.
+</p>
+
+<p>
+And despite her expressionless face, whenever she sees him
+roaming through the lower realms, there is a faint smile.
+</p>
+
+</div>
+
+</div>
+
+<img src="nyra.jpg" alt="Nyra Solwein">
+
+</div>
+
+</div>
+</section>
+
+
+<section id="present">
+
+<div class="container">
+
+<div class="section-title">
+    <small>After the war</small>
+    <h2>The Present Ozai</h2>
+</div>
+
+<div class="card">
+
+<p>
+Ozai returned to Sim Te Lenna to attend the celebration of
+winning the war.
+</p>
+
+<p>
+He remained an unknown man who secretly protected all beings.
+This earned him another title:
+</p>
+
+<div class="quote-box">
+    THE PROTECTOR OF ALL<br>
+    THE UNKNOWNED SAINT
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>The Realm of the Writers</h3>
+
+<p>
+After another eon passed, T. C. O. A. C created the Realm of the
+Writers.
+</p>
+
+<p>
+The beings within this realm could die unlike those from before.
+Books and stories filled the realm.
+</p>
+
+<p>
+T. C. O. A. C absolutely disallowed any beings from interfering
+with the lives of this realm.
+</p>
+
+<p>
+But Ozai had been given permission to roam everywhere.
+</p>
+
+<p>
+Therefore, Ozai was excluded from that restriction.
+</p>
+
+<p class="fire-text">
+No being knows about this privilege.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Ozai the Wanderer</h3>
+
+<p>
+Ozai now roams the Realm of Writers.
+</p>
+
+<p>
+The books captured his interest.
+</p>
+
+<p>
+He often takes a book and pours his consciousness into it,
+giving the beings inside their own will and fate.
+</p>
+
+<p>
+He enjoys the stories so much that he sometimes lets a projection
+of himself remain inside the book and live through its story.
+</p>
+
+</div>
+
+
+<div class="quote-box">
+
+What being will be able to use the Creation Flame or Chaos Flame again?
+
+<br><br>
+
+Will they ask advice from the previous owner?
+
+<br>
+
+Or will they be consumed by arrogance and envy too...
+
+<br>
+
+...and turn against their Creator?
+
+<br><br>
+
+<span class="fire-text">
+Fun story indeed.
+</span>
+
+</div>
+
+</div>
+</section>
+
+
+<footer>
+
+<p>
+🔥 <strong>THE FIRE SAINT</strong> 🔥
+</p>
+
+<p>
+Oqhoi fȳr • Ozai • The Unknown Protector
+</p>
+
+<p>
+The story continues beyond the page.
+</p>
+
+</footer>
+
+
+<script>
+
+const cards = document.querySelectorAll('.card,.tier,.event,.big-feat');
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.style.opacity='1';
+            entry.target.style.transform='translateY(0)';
+        }
+    });
+},{
+    threshold:.08
+});
+
+cards.forEach(card=>{
+    card.style.opacity='0';
+    card.style.transform='translateY(25px)';
+    card.style.transition='opacity .7s ease, transform .7s ease';
+    observer.observe(card);
+});
+
+</script>
+
+</body>
+  </html>
